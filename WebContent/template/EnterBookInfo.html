@@ -1,0 +1,21 @@
+
+<div class="rw line grid12">
+	<label class="kk-label"> ISBN </label>
+	<div class="unit lastunit">
+		<input type="text" class="kk-input" id="bookname" data-ng-model="newBook.name" value="">
+		<input type="text" class="kk-input" id="author" data-ng-model="newBook.author" value="">
+	</div>
+	<div class="add-button">
+		<input type="button" class="add-input" value="Add" ng-click="addBook();">
+	</div>
+</div>
+<ul>
+	<li ng-repeat="book in books">
+		<label> {{book.name}}  {{book.author}} </label>
+	</li>
+	<div ng-if="books.length">
+		<input type="button" class="add-input" value="PostBook" ng-click="postBook();">
+	</div>
+</ul>
+
+<!--ng-click="postBook();"-->
