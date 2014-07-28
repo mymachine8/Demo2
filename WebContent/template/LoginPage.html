@@ -1,77 +1,81 @@
 
-<h1> Login Page </h1>
+<h1>Login Page</h1>
 <script type="text/javascript">
- function startme() {
-	var scope = angular.element("#signin").scope();
-	scope.start();
-}
+	function startme() {
+		var scope = angular.element("#signin").scope();
+		scope.start();
+	}
 </script>
-<span id="signin">
-  <span id="myGsignin"></span>
+<span id="signin"> <span id="myGsignin"></span>
 </span>
 <div id="result"></div>
 <script type="text/javascript">
-    (function () {
-      var po = document.createElement('script');
-      po.type = 'text/javascript';
-      po.async = true;
-      po.src = 'https://plus.google.com/js/client:plusone.js?onload=startme';
-      debugger
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(po, s);
-    })();
-  //var scope = angular.element("#outer").scope(); where #outer is the div
-  </script>
-  <script type="text/javascript">
+	(function() {
+		var po = document.createElement('script');
+		po.type = 'text/javascript';
+		po.async = true;
+		po.src = 'https://plus.google.com/js/client:plusone.js?onload=startme';
+		debugger
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(po, s);
+	})();
+	//var scope = angular.element("#outer").scope(); where #outer is the div
+</script>
+<script type="text/javascript">
+	/*
+	 * This is boilerplate code that is used to initialize
+	 * the Facebook JS SDK.  You would normally set your
+	 * App ID in this code.
+	 */
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : "660364867436125", // App ID
+			status : true, // check login status
+			cookie : true, // enable cookies to allow the
+			// server to access the session
+			xfbml : true, // parse page for xfbml or html5
+			// social plugins like login button below
+			version : 'v2.0', // Specify an API version
+		});
+	};
 
-  /*
-   * This is boilerplate code that is used to initialize
-   * the Facebook JS SDK.  You would normally set your
-   * App ID in this code.
-   */
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : "660364867436125", // App ID
-      status     : true,    // check login status
-      cookie     : true,    // enable cookies to allow the
-                            // server to access the session
-      xfbml      : true,     // parse page for xfbml or html5
-                            // social plugins like login button below
-      version        : 'v2.0',  // Specify an API version
-    });
-  };
-  
-  (function(d, s, id){
-	     var js, fjs = d.getElementsByTagName(s)[0];
-	     if (d.getElementById(id)) {return;}
-	     js = d.createElement(s); js.id = id;
-	     js.src = "//connect.facebook.net/en_US/sdk.js";
-	     fjs.parentNode.insertBefore(js, fjs);
-	   }(document, 'script', 'facebook-jssdk'));
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
 </script>
 <div>
-<img  src="./img/fblogin.png" onclick="login()">
+	<img src="./img/fblogin.png" onclick="login()">
 </div>
 <div id="result">
-<img src="./img/logout.png" onclick="logout()">
+	<img src="./img/logout.png" onclick="logout()">
 </div>
 
 <script>
-function login() {
-	FB.login(function(response) {
-		if(response.authResponse) {
-			console.log("fetching your information....");
-			FB.api('/me',function(response){
-				console.log('Youre luck guy,'+ response.name);
-			});
-		}
-			else {
-				console.log('user did not login successfully or something is wrong');
-			}
-		});
-}
+	function login() {
+		FB
+				.login(function(response) {
+					if (response.authResponse) {
+						console.log("fetching your information....");
+						FB.api('/me', function(response) {
+							console.log('Youre luck guy,' + response.name);
+						});
+					} else {
+						console
+								.log('user did not login successfully or something is wrong');
+					}
+				});
+	}
 
-function logout() {
-	FB.logout(function() {document.location.reload();});
-}
+	function logout() {
+		FB.logout(function() {
+			document.location.reload();
+		});
+	}
 </script>
